@@ -12,6 +12,10 @@ const App = () => {
 
     const addPerson = (event) => {
         event.preventDefault()
+        if (persons.find((person) => newName == person.name)) {
+            window.alert(`${newName} is already in the phonebook`)
+            return
+        }
         const nameObject = {
             name: newName,
             id: String(persons.length + 1),
@@ -29,11 +33,12 @@ const App = () => {
                     name: <input
                         value={newName}
                         onChange={handleNameChange}
+
                     />
                 </div>
                 <button type="submit">add</button>
             </form>
-
+            <h2>Number</h2>
             <div>
                 {persons.map((person, index) => (
                     <li key={person.id ?? index}>
@@ -41,10 +46,7 @@ const App = () => {
                     </li>
                 ))}
             </div>
-            <div>debug: {newName}</div>
 
-            <h2>Numbers</h2>
-            ...
         </div>
     )
 

@@ -34,17 +34,16 @@ const App = () => {
         <button type="submit">add</button>
       </form>
 
-      <div>
+
+      <h2>Numbers</h2>
+      <ul>
         {persons.map((person, index) => (
-          <li key={person.id ?? index}>
+          <li key={person.name}>
             {person.name}
           </li>
         ))}
-      </div>
-      <div>debug: {newName}</div>
+      </ul>
 
-      <h2>Numbers</h2>
-      ...
     </div>
   )
 
