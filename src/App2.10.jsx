@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import Form from './components/Form'
+import PersonList from './components/PersonList'
 
 const App = () => {
 
@@ -40,34 +42,25 @@ const App = () => {
         setNewNumber('')
         console.log('ihminen lisätty onnistuneesti')
 
-
-
     }
+
     return (
         <div>
             <h2>Phonebook</h2>
-            <form onSubmit={addPerson}>
-                <div>
-                    name: <input
-                        value={newName}
-                        onChange={handleNameChange}
-                    />
-                </div>
-                <div>
-                    number: <input
-                        value={newNumber}
-                        onChange={handleNumberChange}
-                    />
-                </div>
-                <button type="submit">add</button>
-            </form>
+            <Form
+                onSubmit={addPerson}
+                newName={newName}
+                handleNameChange={handleNameChange}
+                newNumber={newNumber}
+                handleNumberChange={handleNumberChange}
+            />
+
+
             <h2>Number</h2>
             <div>
-                {persons.map((person, index) => (
-                    <li key={person.name ?? index}>
-                        {person.name} {person.number}
-                    </li>
-                ))}
+                <PersonList
+                    persons={persons}
+                />
 
             </div>
 
