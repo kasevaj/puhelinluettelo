@@ -1,6 +1,8 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Form from './components/Form'
 import PersonList from './components/PersonList'
+import axios from 'axios'
+
 
 const App = () => {
 
@@ -20,6 +22,17 @@ const App = () => {
         console.log(event.target.value)
         setNewNumber(event.target.value)
     }
+
+    useEffect(() => {
+        console.log('effect')
+        axios
+            .get('http://localhost:3001/persons')
+            .then(response => {
+                console.log('promise fulfilled')
+                setPersons(response.data)
+            })
+    }, [])
+
     const addPerson = (event) => {
         event.preventDefault()
         console.log('yritetään lisätä uusi ihminen')
