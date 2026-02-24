@@ -9,6 +9,7 @@ const create = newObject => {
     return axios.post(baseUrl, newObject)
 }
 
+// 2.15 tehtävää varten
 const update = (id, newObject) => {
     return axios.put(`${baseUrl}/${id}`, newObject)
 }
