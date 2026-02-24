@@ -56,6 +56,12 @@ const App = () => {
         setNewNumber('')
         console.log('ihminen lisätty onnistuneesti')
 
+        axios
+            .post('http://localhost:3001/persons', personObject)
+            .then(response => {
+                setPersons(persons.concat(response.data))
+            })
+
     }
 
     return (
@@ -85,3 +91,5 @@ const App = () => {
 }
 
 export default App
+
+
