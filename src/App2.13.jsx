@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import Form from './components/Form'
 import PersonList from './components/PersonList'
-import axios from 'axios'
+import personService from './services/persons'
 
 
 
@@ -26,8 +26,8 @@ const App = () => {
 
     useEffect(() => {
         console.log('effect')
-        axios
-            .get('http://localhost:3001/persons')
+        personService
+            .getAll()
             .then(response => {
                 console.log('promise fulfilled')
                 setPersons(response.data)
@@ -51,15 +51,15 @@ const App = () => {
             id: String(persons.length + 1),
         }
 
-        setPersons(persons.concat(personObject))
-        setNewName('')
-        setNewNumber('')
-        console.log('ihminen lisätty onnistuneesti')
 
-        axios
-            .post('http://localhost:3001/persons', personObject)
+
+        personService
+            .create(personObject)
             .then(response => {
                 setPersons(persons.concat(response.data))
+                setNewName('')
+                setNewNumber('')
+                console.log('ihminen lisätty onnistuneesti')
             })
 
     }
