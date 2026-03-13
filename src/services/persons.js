@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseUrl = 'https://puhelinluettelonbackend.fly.dev/api/persons'
+const baseUrl = '/api/persons'
 
 const getAll = () => {
     return axios.get(baseUrl)

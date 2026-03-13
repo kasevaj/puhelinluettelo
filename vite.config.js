@@ -10,4 +10,11 @@ export default defineConfig({
       },
     }),
   ],
+  server: {
+
+    proxy: {
+      '/api': 'https://puhelinluettelonbackend.fly.dev',
+    }
+
+  },
 })

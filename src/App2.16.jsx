@@ -33,7 +33,7 @@ const App = () => {
             .getAll()
             .then(response => {
                 console.log('promise fulfilled')
-                console.log("After fetching, persons:", persons)
+                console.log("After fetching, persons:", response.data)
                 setPersons(response.data)
             })
     }, [])
