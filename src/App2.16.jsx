@@ -19,7 +19,7 @@ const App = () => {
         setNewName(event.target.value)
     }
 
-    const [newNumber, setNewNumber] = useState(0)
+    const [newNumber, setNewNumber] = useState('')
     const handleNumberChange = (event) => {
         console.log(event.target.value)
         setNewNumber(event.target.value)
@@ -27,11 +27,13 @@ const App = () => {
     const [confMessage, setconfMessage] = useState(null)
 
     useEffect(() => {
-        console.log('effect')
+        console.log("Fetching data from backend...")
+        console.log("Before fetching, persons:", persons)
         personService
             .getAll()
             .then(response => {
                 console.log('promise fulfilled')
+                console.log("After fetching, persons:", persons)
                 setPersons(response.data)
             })
     }, [])
